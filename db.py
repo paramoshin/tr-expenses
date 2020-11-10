@@ -45,8 +45,18 @@ def get_sum_by_days() -> Dict[str, float]:
     return result
 
 
+def get_date_range() -> Tuple[str, str]:
+    cursor.execute("SELECT MIN(DATE(created_at)) as min_date, MAX(DATE(created_at)) as max_date FROM expense")
+    row = cursor.fetchone()
+    return row
+
+
 def get_cursor():
     return cursor
+
+
+def get_conn():
+    return conn
 
 
 def init() -> None: 
